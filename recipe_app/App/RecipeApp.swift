@@ -11,13 +11,17 @@ import SwiftUI
 struct recipeApp: App {
   let persistenceController = PersistenceController.shared
   @StateObject private var authService: AuthenticationService
+  @StateObject private var recipeService: RecipeService
   
   init() {
     let viewContext = PersistenceController.shared.container.viewContext
     let authService = AuthenticationService(viewContext: viewContext)
+    let recipeService = RecipeService(viewContext: viewContext)
     
+    authService.recipeService = recipeService
     
     _authService = StateObject(wrappedValue: authService)
+    _recipeService = StateObject(wrappedValue: recipeService)
     
     authService.checkForExistingSession()
   }
@@ -27,6 +31,7 @@ struct recipeApp: App {
       MainView()
         .environment(\.managedObjectContext, persistenceController.container.viewContext)
         .environmentObject(authService)
+        .environmentObject(recipeService)
     }
   }
 }

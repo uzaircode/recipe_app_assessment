@@ -1,0 +1,64 @@
+{
+  "recipeTypes": [
+    {
+      "id": "breakfast",
+      "name": "breakfast",
+      "displayName": "Breakfast",
+      "iconName": "sun.max.fill"
+    },
+    {
+      "id": "lunch",
+      "name": "lunch",
+      "displayName": "Lunch",
+      "iconName": "sun.dust.fill"
+    },
+    {
+      "id": "dinner",
+      "name": "dinner",
+      "displayName": "Dinner",
+      "iconName": "moon.stars.fill"
+    },
+    {
+      "id": "dessert",
+      "name": "dessert",
+      "displayName": "Dessert",
+      "iconName": "birthday.cake.fill"
+    },
+    {
+      "id": "snack",
+      "name": "snack",
+      "displayName": "Snack",
+      "iconName": "carrot.fill"
+    },
+    {
+      "id": "appetizer",
+      "name": "appetizer",
+      "displayName": "Appetizer",
+      "iconName": "leaf.fill"
+    },
+    {
+      "id": "beverage",
+      "name": "beverage",
+      "displayName": "Beverage",
+      "iconName": "cup.and.saucer.fill"
+    },
+    {
+      "id": "soup",
+      "name": "soup",
+      "displayName": "Soup",
+      "iconName": "flame.fill"
+    },
+    {
+      "id": "salad",
+      "name": "salad",
+      "displayName": "Salad",
+      "iconName": "leaf.arrow.circlepath"
+    },
+    {
+      "id": "vegetarian",
+      "name": "vegetarian",
+      "displayName": "Vegetarian",
+      "iconName": "leaf.circle.fill"
+    }
+  ]
+}

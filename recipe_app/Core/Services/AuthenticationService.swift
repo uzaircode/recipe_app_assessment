@@ -39,9 +39,11 @@ class AuthenticationService: ObservableObject {
   
   private let viewContext: NSManagedObjectContext
   private let keychainKey = "com.recipe.authToken"
+  weak var recipeService: RecipeService?
   
   init(viewContext: NSManagedObjectContext) {
     self.viewContext = viewContext
+    // Don't check session here - will be called after recipeService is connected
   }
   
   private func hashPassword(_ password: String) -> String {
@@ -131,6 +133,9 @@ class AuthenticationService: ObservableObject {
         user.lastLogin = Date()
         try viewContext.save()
         
+        // Set current user in recipe service
+        print("AuthService: Existing session found for user: \(user.id ?? UUID())")
+        recipeService?.setCurrentUser(user.id)
       } else {
         removeTokenFromKeychain()
         isAuthenticated = false
@@ -169,6 +174,8 @@ class AuthenticationService: ObservableObject {
     self.currentUser = UserModel(from: user)
     self.isAuthenticated = true
     
+    // Set current user in recipe service (this will load existing recipes)
+    recipeService?.setCurrentUser(user.id)
   }
   
   func register(username: String, password: String) async throws {
@@ -200,8 +207,11 @@ class AuthenticationService: ObservableObject {
     self.currentUser = UserModel(from: newUser)
     self.isAuthenticated = true
     
+    // Set current user in recipe service and load sample data for new user
     if let userId = newUser.id {
       print("AuthService: New user registered with ID: \(userId)")
+      recipeService?.setCurrentUser(userId)
+      recipeService?.loadSampleData(for: userId)
     }
   }
   
@@ -226,10 +236,25 @@ class AuthenticationService: ObservableObject {
     self.currentUser = nil
     self.isAuthenticated = false
     
+    // Clear recipe service user
+    recipeService?.setCurrentUser(nil)
   }
   
   func deleteAccount() {
     guard let currentUser = currentUser else { return }
+    
+    // First, delete all recipes for this user
+    let recipeFetchRequest: NSFetchRequest<Recipe> = Recipe.fetchRequest()
+    recipeFetchRequest.predicate = NSPredicate(format: "userId == %@", currentUser.id as CVarArg)
+    
+    do {
+      let recipes = try viewContext.fetch(recipeFetchRequest)
+      for recipe in recipes {
+        viewContext.delete(recipe)
+      }
+    } catch {
+      print("Error deleting user recipes: \(error)")
+    }
     
     // Then delete the user account
     let userFetchRequest: NSFetchRequest<User> = User.fetchRequest()
@@ -251,5 +276,6 @@ class AuthenticationService: ObservableObject {
     removeTokenFromKeychain()
     self.currentUser = nil
     self.isAuthenticated = false
+    recipeService?.setCurrentUser(nil)
   }
 }
