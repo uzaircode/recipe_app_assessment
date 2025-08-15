@@ -19,8 +19,8 @@ A modern iOS recipe management application built with SwiftUI and Core Data, pro
 <img width="150" height="450" alt="simulator_screenshot_B2C67054-C95A-4FE1-BDCC-518AAF731038" src="https://github.com/user-attachments/assets/4aef2559-08f5-4643-83e1-42812095f4df" />
 <img width="150" height="450" alt="simulator_screenshot_56F7F20B-8DC8-4F5B-A379-86E33D9F6D40" src="https://github.com/user-attachments/assets/8e3059c5-a671-4d08-a32d-97f7bcff714b" />
 <img width="150" height="450" alt="simulator_screenshot_7DFB3573-D200-49DC-A673-9EBFC4C588A7" src="https://github.com/user-attachments/assets/9c6f6e27-cef1-49d9-8cc0-474936e55dcd" />
+<img width="150" height="450" alt="simulator_screenshot_B866A340-1215-43C8-AA18-59E31772D37A" src="https://github.com/user-attachments/assets/940a12d6-eb48-46d2-8cd5-941227b8409c" />
 <img width="150" height="450" alt="simulator_screenshot_42E7BDC9-3474-4761-90E1-54CC61A5AC5A" src="https://github.com/user-attachments/assets/035fac6f-fcc5-4c8d-ac71-3bb46ad55501" />
-<img width="150" height="450" alt="simulator_screenshot_5AF456DB-DFB2-4155-8BEE-D333DD3F09E6" src="https://github.com/user-attachments/assets/c667e99f-79dc-444f-a99c-e29ffb8f9126" />
 <img width="150" height="450" alt="simulator_screenshot_8E10E79F-69F0-4D02-83B7-15F0559AADAF" src="https://github.com/user-attachments/assets/00c7ab36-ce88-4052-ae08-6365a72d440b" />
 
 
@@ -389,8 +389,12 @@ The app includes comprehensive logging for debugging:
 
 ## Testing
 
+## Screenshots
+<img width="150" height="450" alt="Screenshot 2025-08-15 at 6 54 17 PM" src="https://github.com/user-attachments/assets/59df6dd2-eba0-436b-a2f5-86a0b5ae26f2" />
+
+
 ### Comprehensive Test Suite
-The app includes a modern, comprehensive test suite with ~90% code coverage across three testing layers:
+The app includes a modern, comprehensive test suite with ~90% code coverage across two testing layers:
 
 ### Unit Tests (`recipe_appTests.swift`)
 Comprehensive business logic testing using Swift Testing framework:
