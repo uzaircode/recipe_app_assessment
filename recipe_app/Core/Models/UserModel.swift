@@ -63,4 +63,3 @@ struct UserModel {
     entity.profileImageData = self.profileImageData
   }
 }
-

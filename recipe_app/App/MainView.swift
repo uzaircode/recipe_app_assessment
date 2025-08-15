@@ -9,10 +9,14 @@ import SwiftUI
 
 struct MainView: View {
   @EnvironmentObject var authService: AuthenticationService
+  @EnvironmentObject var recipeService: RecipeService
   
   var body: some View {
     if authService.isAuthenticated {
-      RecipeListView()
+      RecipeListView(
+        recipeService: recipeService,
+        authService: authService
+      )
     } else {
       LoginView(authService: authService)
     }
